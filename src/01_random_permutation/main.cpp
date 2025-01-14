@@ -52,7 +52,12 @@ a
 
 vector<int> random_vector() {
 
-    vector<int> v = {1, 2, 3};
+    vector<int> v;
+    for(int i = 1; i < 1097; i++){
+        v.push_back(i);
+    }
+    set<string> s;
+    
 
 
     static random_device rd; 
@@ -64,21 +69,48 @@ vector<int> random_vector() {
     return v;
 }
 
-int main() {
-    map<vector<int>, int> mpp;
-
-    for (int i = 0; i < 600000; i++) {
-        vector<int> v = random_vector();
-        mpp[v] += 1;
-    }
-
-    for (const auto &it : mpp) {
-        cout << "vector: ";
-        for (int i : it.first) {
-            cout << i << " ";
+int maxUpdates(vector<int> arr){
+    int count = 0;
+    int max = arr[0];
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i] > max){
+            max = arr[i];
+            count++;
         }
-        cout << "count: " << it.second << endl;
     }
+
+    return count;
+}
+
+int main() {
+    // map<vector<int>, int> mpp;
+
+    // for (int i = 0; i < 600000; i++) {
+    //     vector<int> v = random_vector();
+    //     mpp[v] += 1;
+    // }
+
+    // for (const auto &it : mpp) {
+    //     cout << "vector: ";
+    //     for (int i : it.first) {
+    //         cout << i << " ";
+    //     }
+    //     cout << "count: " << it.second << endl;
+    // }
+
+    double cnt = 0;
+    int itr = 100000;
+
+    for (int i = 0; i < itr; i++) {
+        vector<int> v = random_vector();
+        int c = maxUpdates(v);
+        cnt += c;
+        cnt / itr;
+    }
+    
+
+    cout << "Average: " << cnt / itr << endl;
+
 
     return 0;
 }
