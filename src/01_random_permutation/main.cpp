@@ -41,7 +41,8 @@ code to generate sandom permutation of a given array
 
 
 a permutation is good if A[i] != i for any i
-a
+
+
 */
 #include <iostream>
 #include <vector>
@@ -53,7 +54,7 @@ a
 vector<int> random_vector() {
 
     vector<int> v;
-    for(int i = 1; i < 1097; i++){
+    for(int i = 1; i < 64; i++){
         v.push_back(i);
     }
     set<string> s;

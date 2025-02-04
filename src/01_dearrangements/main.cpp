@@ -5,6 +5,11 @@
 
 using namespace std;
 
+/*
+HINT: use inclusion exclusion principle for prooving that logN times
+
+*/
+
 bool is_dearrangement(const vector<int>& perm) {
     for (int i = 0; i < perm.size(); ++i) {
         if (perm[i] == i + 1) { 
