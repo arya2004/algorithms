@@ -89,7 +89,7 @@ int Josephus(int n, int k)
 int main()
 {
     int n = 25, k = 2;
-    cout << Josephus(n, k);
+    cout << Josephus(n, k) << endl;
     return 0;
 }
 
