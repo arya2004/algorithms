@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// Brute Force Approach (O(n^2))
+// Brute Force (O(n^2))
 int findMajorityBruteForce(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n; i++) {
@@ -20,7 +20,7 @@ int findMajorityBruteForce(vector<int>& arr) {
     return -1; 
 }
 
-// Sorting Approach (O(n log n))
+// Sorting (O(n log n))
 int findMajoritySorting(vector<int>& arr) {
     sort(arr.begin(), arr.end());
     int candidate = arr[arr.size() / 2]; 
@@ -32,7 +32,7 @@ int findMajoritySorting(vector<int>& arr) {
     return (count > arr.size() / 2) ? candidate : -1;
 }
 
-// Boyer-Moore Voting Algorithm (O(n))
+// Voting  (O(n))
 int findMajorityBoyerMoore(vector<int>& arr) {
     int candidate = 0, count = 0;
     
