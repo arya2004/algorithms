@@ -20,7 +20,9 @@ int kadance(vector<int> &nums){
 
 int main(){
 
-    vector<int> arr = {-2, -3, 4, -1, -2, 1, 5, -3};
+    //vector<int> arr = {-2, -3, 4, -1, -2, 1, 5, -3};
+    vector<int> arr = {-2, -3, -4, -1, -2, -1, -5, -3};
+    
     cout << kadance(arr);
 
     return 0;
