@@ -29,4 +29,5 @@
 # Executables
 *.exe
 *.out
-*.app
+*.appsrc/03_Josephers/c/josephus
+src/01_dearrangements/c/derangements
