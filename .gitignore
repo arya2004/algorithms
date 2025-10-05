@@ -30,3 +30,4 @@
 *.exe
 *.out
 *.appsrc/03_Josephers/c/josephus
+src/01_dearrangements/c/derangements
