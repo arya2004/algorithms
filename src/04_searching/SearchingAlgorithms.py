@@ -112,6 +112,30 @@ def exponential_search(arr, target):
         i *= 2
 
     return binary_search_recursive(arr, target, i // 2, min(i, len(arr) - 1))
+    
+
+    7️⃣ Bitwise Index Search
+def bitwise_index_search(arr, target):
+    """
+    Bitwise Index Search on sorted arrays.
+    Uses powers of 2 to jump indices and then binary search the segment.
+    """
+    n = len(arr)
+    index = 0
+    while index < n and arr[index] <= target:
+        index = (index + 1) << 1  # jump using bitwise shift
+    left = index >> 1  # previous index
+    right = min(index, n-1)
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
 
 
 # 🧪 Example Run
@@ -125,3 +149,4 @@ if __name__ == "__main__":
     print("Jump Search:", jump_search(arr, target))
     print("Interpolation Search:", interpolation_search(arr, target))
     print("Exponential Search:", exponential_search(arr, target))
+    print("Bitwise Index Search:", bitwise_index_search(arr, target))
