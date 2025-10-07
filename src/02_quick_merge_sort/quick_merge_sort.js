@@ -1,56 +1,33 @@
+#!/usr/bin/env node
+
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[Math.floor(arr.length / 2)];
+  const left = arr.filter(x => x < pivot);
+  const mid = arr.filter(x => x === pivot);
+  const right = arr.filter(x => x > pivot);
+  return [...quickSort(left), ...mid, ...quickSort(right)];
+}
+
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+  return merge(left, right);
+}
+
 function merge(left, right) {
-    const merged = [];
-    let i = 0, j = 0;
-
-    while (i < left.length && j < right.length) {
-        if (left[i] <= right[j]) {
-            merged.push(left[i]);
-            i++;
-        } else {
-            merged.push(right[j]);
-            j++;
-        }
-    }
-
-    while (i < left.length) {
-        merged.push(left[i]);
-        i++;
-    }
-
-    while (j < right.length) {
-        merged.push(right[j]);
-        j++;
-    }
-
-    return merged;
+  const result = [];
+  while (left.length && right.length)
+    result.push(left[0] <= right[0] ? left.shift() : right.shift());
+  return result.concat(left, right);
 }
 
-function quickMergeSort(arr, threshold = 10) {
-    if (arr.length <= 1) {
-        return arr;
-    }
-
-    if (arr.length <= threshold) {
-        const mid = Math.floor(arr.length / 2);
-        const left = quickMergeSort(arr.slice(0, mid), threshold);
-        const right = quickMergeSort(arr.slice(mid), threshold);
-        return merge(left, right);
-    }
-
-    const pivot = arr[Math.floor(arr.length / 2)];
-    const left = arr.filter(x => x < pivot);
-    const middle = arr.filter(x => x === pivot);
-    const right = arr.filter(x => x > pivot);
-
-    return [
-        ...quickMergeSort(left, threshold),
-        ...middle,
-        ...quickMergeSort(right, threshold)
-    ];
+const nums = process.argv.slice(2).map(Number);
+if (nums.length === 0) {
+  console.error("Usage: node sort.js 5 2 9 1");
+  process.exit(1);
 }
-
-if (require.main === module) {
-    const data = [34, 7, 23, 32, 5, 62, 32, 23, 12];
-    console.log("Original:", data);
-    console.log("Sorted:  ", quickMergeSort(data));
-}
+console.log("Quick Sort:", quickSort(nums));
+console.log("Merge Sort:", mergeSort(nums));
