@@ -12,4 +12,3 @@ const k = parseInt(prompt("Enter step count (k):"));
 
 const safePosition = josephus(n, k);
 console.log("Safe position is:", safePosition);
-alert("Safe position is: " + safePosition);
